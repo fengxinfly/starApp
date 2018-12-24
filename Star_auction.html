@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="明星，粉丝，公益">
+		<meta name="Description" content="明星粉丝互动平台">
+		<meta name="copyright" content="蜗牛" >
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/star_page.css"/>
+		<link rel="stylesheet" type="text/css" href="css/pullToRefresh.css"/>
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/pullToRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<title>明星拍卖</title>
+		
+	</head>
+	<body>
+		<div class="sa_content" id="wrapper">
+			<ul>
+				<li>
+					<a href="#">
+						<img src="images/star_auction/star_auction1.jpg"/>
+						<p class="sa_c_title">高圆圆《咱们结婚吧》拍...</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li><li>
+					<a href="#">
+						<img src="images/star_auction/star_auction2.jpg"/>
+						<p class="sa_c_title">成龙《十二生肖》护目镜...</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li><li>
+					<a href="#">
+						<img src="images/star_auction/star_auction3.jpg"/>
+						<p class="sa_c_title">孙红雷在《好先生》电视剧拍摄皮衣</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li><li>
+					<a href="#">
+						<img src="images/star_auction/star_auction4.jpg"/>
+						<p class="sa_c_title">王志飞同款围巾帽子各种...</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li><li>
+					<a href="#">
+						<img src="images/star_auction/star_auction5.jpg"/>
+						<p class="sa_c_title">杨幂定制款OPPO R9S</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li><li>
+					<a href="#">
+						<img src="images/star_auction/star_auction6.jpg"/>
+						<p class="sa_c_title">范冰冰逛街休闲外套</p>
+						<p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p>
+						<p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p>
+					</a>
+				</li>
+				
+				
+				
+				
+				
+			</ul>
+		</div>	
+	</body>
+	
+	<script>
+		refresher.init({
+			id:"wrapper",//<------------------------------------------------------------------------------------┐
+			pullDownAction:Refresh,
+			pullUpAction:Load 																			
+			});																																							
+		function Refresh() {																
+			setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+				var el, li, i;																		
+				el =document.querySelector("#wrapper ul");					
+				//这里写你的刷新代码				
+				document.getElementById("wrapper").querySelector(".pullDownIcon").style.display="none";		
+				document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="<img src='images/ok.png'/>刷新成功";																					 
+				setTimeout(function () {
+					wrapper.refresh();
+					document.getElementById("wrapper").querySelector(".pullDownLabel").innerHTML="";								
+					},1000);//模拟qq下拉刷新显示成功效果
+				/****remember to refresh after  action completed！ ---yourId.refresh(); ----|****/ 
+			}, 1000);
+		}
+		
+		function Load() {
+			setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
+				var el, li, i;
+				el =document.querySelector("#wrapper ul");
+				for (i=0; i<6; i++) {
+					li = document.createElement('li');
+					li.innerHTML='<a href="#"><img src="images/star_auction/star_auction6.jpg"/><p class="sa_c_title">范冰冰逛街休闲外套</p><p class="start_price"><i></i><span>起拍价：</span><b>&yen;200.00</b></p><p class="start_time"><i></i><span>时间：</span><b>02.08  10:00</b></p></a>'
+					el.appendChild(li, el.childNodes[0]);
+				}
+				wrapper.refresh();/****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
+			},1000);
+		}
+	</script>
+</html>
+
